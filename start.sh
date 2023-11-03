@@ -16,9 +16,9 @@ if [ -z $1 ]
 
   VM_PUBLIC_IP=$(terraform state show  module.instance.oci_core_public_ip.public_ip[0] | grep ip_address | cut -d "=" -f 2 | tr -d '"')
 
-  while ! nc -zv $VM_PUBLIC_IP 22; do
-  sleep 0.1 # wait for 1/10 of the second before check again
+  while ! nc -z $VM_PUBLIC_IP 22 /dev/null 2>&1; do
+  sleep 0.1
   done
   fi
 
-  echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP""
+  echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP"
