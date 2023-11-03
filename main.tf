@@ -16,7 +16,6 @@ resource "random_string" "random" {
 variable "network_compartment_id" {
   description = "Network compartment OCID"
   type        = string
-  default     = "ocid1.compartment.oc1..aaaaaaaawxrdgjkftw36eijldoec524exi6mwrdq375rtdfy46fkfaidjypq"
 }
 
 module "vcn" {
