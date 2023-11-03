@@ -9,7 +9,16 @@ if [ -z $1 ]
     terraform validate
     if [ $? -eq 0 ]; then
         terraform apply --auto-approve
+        sleep 1
     else
         echo "Terraform validation failed"
     fi
-fi
+
+  VM_PUBLIC_IP=$(terraform state show  module.instance.oci_core_public_ip.public_ip[0] | grep ip_address | cut -d "=" -f 2 | tr -d '"')
+
+  while ! nc -zv $VM_PUBLIC_IP 22; do
+  sleep 0.1 # wait for 1/10 of the second before check again
+  done
+  fi
+
+  echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP""
