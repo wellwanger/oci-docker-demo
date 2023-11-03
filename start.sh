@@ -20,5 +20,6 @@ if [ -z $COMPARTMENT ]
         echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP"
     else
         echo "Terraform validation failed"
+    fi
 fi
 
