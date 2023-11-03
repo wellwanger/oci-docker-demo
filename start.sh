@@ -6,7 +6,7 @@ if [ -z $COMPARTMENT ]
   then
     echo "No compartment supplied."
   else
-    export TF_VAR_network_compartment_id=$(oci iam compartment list --all --compartment-id-in-subtree true --name $1| jq --raw-output -c '.data[]["id"]')
+    export TF_VAR_network_compartment_id=$(oci iam compartment list --all --compartment-id-in-subtree true --name $COMPARTMENT| jq --raw-output -c '.data[]["id"]')
     terraform init -input=false
     terraform validate
     if [ $? -eq 0 ]; then
