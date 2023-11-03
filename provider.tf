@@ -9,5 +9,5 @@ terraform {
 }
 
 provider "oci" {
-   region = "sa-saopaulo-1"
+  region = "sa-saopaulo-1"
 }
