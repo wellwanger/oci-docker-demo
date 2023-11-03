@@ -7,3 +7,7 @@ terraform {
   }
   required_version = ">= 1.2.6"
 }
+
+provider "oci" {
+   region = "sa-saopaulo-1"
+}
