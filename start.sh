@@ -17,10 +17,8 @@ if [ -z $COMPARTMENT ]
         while ! nc -z $VM_PUBLIC_IP 22; do
         sleep 0.1
         done
-
         echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP"
-     fi
-  else
+    else
         echo "Terraform validation failed"
 fi
 
