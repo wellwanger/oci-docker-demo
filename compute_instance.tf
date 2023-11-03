@@ -41,6 +41,7 @@ module "instance" {
   }
 }
 
-output "ssh_command" {
+output "connect_to_your_vm" {
+  description = "SSH command to connect to VM"
   value = "ssh -i ./id_rsa opc@${element(distinct(module.instance.public_ip), 0)}"
 }
