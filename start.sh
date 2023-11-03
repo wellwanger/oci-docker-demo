@@ -17,7 +17,12 @@ if [ -z $COMPARTMENT ]
         while ! nc -z $VM_PUBLIC_IP 22; do
         sleep 0.1
         done
+
+        while | systemctl --all --type service | grep -i "docker.service"; do
+        sleep 0.1
+        done
         echo "Connect to your lab environment using ssh -i id_rsa opc@$VM_PUBLIC_IP"
+
     else
         echo "Terraform validation failed"
     fi
