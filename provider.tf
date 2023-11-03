@@ -7,9 +7,3 @@ terraform {
   }
   required_version = ">= 1.2.6"
 }
-
-provider "oci" {
-  auth                = "SecurityToken"
-  region              = "sa-saopaulo-1"
-  config_file_profile = "wellnesslad"
-}
