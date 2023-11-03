@@ -14,7 +14,7 @@ if [ -z $1 ]
         echo "Terraform validation failed"
     fi
 
-  VM_PUBLIC_IP=$(terraform state show  module.instance.oci_core_public_ip.public_ip[0] | grep ip_address | cut -d "=" -f 2 | tr -d '"')
+  VM_PUBLIC_IP=$(terraform state show  module.instance.oci_core_public_ip.public_ip[0] | grep ip_address | cut -d "=" -f 2 | tr -d '"' | sed 's/ //g' )
 
   while ! nc -z $VM_PUBLIC_IP 22; do
   sleep 0.1
